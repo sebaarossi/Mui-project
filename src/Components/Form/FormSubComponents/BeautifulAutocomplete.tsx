@@ -15,6 +15,11 @@ export default function BeautifulAutocomplete(props: {value: string, onInputChan
                 return (
                     <TextField 
                     name="role"
+                    sx={{
+                        "& .MuiOulinedInput-root.Mui-focused":{
+                            color: "primary.dark"
+                        }
+                    }}
                     {...params}
                     />
                 )
@@ -26,6 +31,15 @@ export default function BeautifulAutocomplete(props: {value: string, onInputChan
                         `${option}`
                     </li>
                 )
+            }}
+            ListboxProps={{
+                sx:{
+                    height:100,
+                    color: "yellow",
+                    "& li.MuiAutocomplete-option:nth-child(even)": {backgroundColor: "green"},
+                    "& li.MuiAutocomplete-option:hover": {backgroundColor: "gold"},
+                    "& li.MuiAutocomplete-option[aria-selected-'true'].Mui-focused": {backgroundColor: "green"},
+                }
             }}
             isOptionEqualToValue={(option, value) => option === value || value === ""}
         />

@@ -1,4 +1,4 @@
-import { Autocomplete, FilledTextFieldProps, FormControl, FormGroup, ListItemText, MenuItem, OutlinedTextFieldProps, Paper, Select, StandardTextFieldProps, TextField, TextFieldVariants, Stack, Button, FormLabel, RadioGroup, FormControlLabel, Radio, AutocompleteChangeReason, AutocompleteInputChangeReason, SelectChangeEvent, Dialog, Alert, AlertTitle } from "@mui/material"
+import { Autocomplete, FilledTextFieldProps, FormControl, FormGroup, ListItemText, MenuItem, OutlinedTextFieldProps, Paper, Select, StandardTextFieldProps, TextField, TextFieldVariants, Stack, Button, FormLabel, RadioGroup, FormControlLabel, Radio, AutocompleteChangeReason, AutocompleteInputChangeReason, SelectChangeEvent, Dialog, Alert, AlertTitle, Checkbox } from "@mui/material"
 import { DesktopDatePicker} from "@mui/x-date-pickers"
 import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider"
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs"
@@ -10,11 +10,25 @@ import BeautifulAutocomplete from "./FormSubComponents/BeautifulAutocomplete";
 import BeautifulSelect from "./FormSubComponents/BeautifulSelect"
 import BeautifulDesktopDatePicker from "./FormSubComponents/BeautifulDesktopDatePicker";
 import BeautifulRadios from "./FormSubComponents/BeautifulRadios";
+import { StyledFormGroup } from "./FormSubComponents/StyledFormGroup";
+
+const skills = ['React', 'Angular', 'Mic', 'Bass', 'Guitar', 'Drums']
 
 export const minWidth = 300
 const today = new Date()
 export const defaultPreference = "Work from home"
 
+const paperInputStyle = {
+    "& .MuiOutlinedInput-root":{
+        "& > fieldset": {border: "1px solid", borderColor: "primary.main"},
+        "&:hover": {
+            "& > fieldset": {borderColor: "primary.light"}
+        }
+    },
+    "& . MuiFormLabel-root":{
+        color: "primary.dark"
+    }
+}
 
 export default function ContactForm() {
     
@@ -93,16 +107,19 @@ export default function ContactForm() {
 
     return (
         <>
-            <Paper>
+            <Paper sx={paperInputStyle}></Paper>
+            <Paper sx={{
+                ...paperInputStyle,
+                margin:{xs: 1, sm: 2},
+                zIndex: "appBar",
+                "&:hover": {backgroundColor : "rgba(0,0,0,0.1"},
+                "& button.MuiButton-text": {backgroundColor: "primary.light"}
+            }}>
                 <form>
                     <FormControl>
-                        <FormGroup
+                        <StyledFormGroup 
                             row
-                            sx={{
-                                padding: 2,
-                                justifyContent: 'space-between'
-
-                            }}
+                            paddingTop={10}
                         >
                             <BeautifulTextField
                                 value={formValues.name}
@@ -112,33 +129,29 @@ export default function ContactForm() {
                                 value={formValues.role || ""}
                                 onInputChange={handleAutocompleteChange}
                             />
-                        </FormGroup>
-                        <FormGroup
-                        row
-                        sx={{
-                            padding: 2,
-                            justifyContent: 'space-between'
-                        }}
-                        >
+                        </StyledFormGroup>
+                        <StyledFormGroup row>
                             <BeautifulSelect 
                                 value={formValues.skills || ""}
                                 onChange={handleSelectChange}
-                            />
+                            >
+                                {skills.map((skillName) => {
+                                    return (
+                                        <MenuItem value={skillName} key={skillName}>
+                                            <Checkbox checked={formValues.skills.includes(skillName)}/>
+                                            <ListItemText primary={skillName} />
+                                        </MenuItem>
+                                    )
+                                })}
+                            </BeautifulSelect>
 
                             < BeautifulDesktopDatePicker
                                 value={formValues.startDate}
                                 onChange={handleDatePickerChange}
                             />
 
-                        </FormGroup>
-                        <FormGroup
-                        row
-                        sx={{
-                            padding: 2,
-                            justifyContent: 'space-between'
-
-                        }}
-                        >
+                        </StyledFormGroup>
+                        <StyledFormGroup row>
                             <BeautifulRadios 
                                 preference={formValues.preference}
                                 handleRadioChange={handleRadioChange}
@@ -149,7 +162,7 @@ export default function ContactForm() {
                             </Stack>
                     
 
-                        </FormGroup>
+                        </StyledFormGroup>
                     </FormControl>
                 </form>
             </Paper>

@@ -30,7 +30,8 @@ const simpleStyles = {
     },
     content: {
         marginLeft: drawerWidth,
-        padding: 10
+        padding: 3,
+        maxWidth: 720
     }
 }
 
