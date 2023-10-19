@@ -2,10 +2,18 @@ import {Avatar, Card, CardContent, CardHeader, Grid, List, ListSubheader, Typogr
 import { contactData } from "../../Data/ContactData"
 import { useState } from "react"
 
+const contactHeight = 24
+var maxSkills = 1
 
 export default function ContactDataGrid() {
     
     const [open, setOpen] = useState(true)
+
+    const gridAlignProps = open? {} : {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+    }
     
     return (
         <Box m={1}>
@@ -14,18 +22,20 @@ export default function ContactDataGrid() {
             <Grid container spacing={2} sx={{width: 900, height: 500}}>
                     {
                         contactData.map((contact) => {
+                            maxSkills = (contact.skills?.length || 0) > maxSkills ? contact.skills?.length || 0 : maxSkills
                             return (
-                                <Grid Item key={contact.name}>
-                                    <Card sx={{width: 300, margin: 6}}>
+                                <Grid Item key={contact.name} xs={open? 6 : 12} sx={{...gridAlignProps}}>
+                                    <Card sx={{width: 300, margin: 6, boxShadow: 6}}>
                                         <CardHeader
                                             title={contact.name}
                                             subheader={contact.role}
                                             avatar={
-                                                <Avatar>{contact.name?.substring(0,1).toUpperCase() || "A"}</Avatar>
+                                                <Avatar sx={{backgroundColor: "primary.main"}}>{contact.name?.substring(0,1).toUpperCase() || "A"}</Avatar>
                                             }
+                                            sx={{borderBottom: "1px solid", borderBottomColor: "primary.main"}}
                                         />
                                         <Collapse in={open} timeout={1000} orientation="vertical">
-                                            <CardContent>
+                                            <CardContent sx={{height: (104 + maxSkills * contactHeight)}}>
                                                 <Typography>
                                                     <b>Start Date: </b> {contact.startDate}
                                                 </Typography>
