@@ -4,8 +4,10 @@ import ContactForm from '../Form/ContactForm';
 import ContatctCardGrid from '../Grid/ContactCardGrid';
 import ContactDataGrid from '../DataGrid/ContactDataGrid';
 import ContactTable from '../Table/ContactTable';
-import { useTheme, Theme } from "@mui/material/styles"
+import { useTheme, Theme, ThemeProvider } from "@mui/material/styles"
+import { BeautifulTheme } from "../../Theme/BeautifulTheme";
 import { blue } from "@mui/material/colors";
+import BeautifulAutocomplete from '../Form/FormSubComponents/BeautifulAutocomplete';
 
 const drawerWidth = 240;
 
@@ -70,13 +72,16 @@ export default function NavDrawer(){
 
                 <main style={simpleStyles.content}>
                     <Toolbar />
-                    <Routes>
-                        <Route path={"/"} element={<ContactForm />} />
-                        <Route path={"/form"} element={<ContactForm />} />
-                        <Route path={"/grid"} element={<ContatctCardGrid />} />
-                        <Route path={"/table"} element={<ContactTable />} />
-                        <Route path={"/data"} element={<ContactDataGrid />} />
-                    </Routes>
+                    <ThemeProvider theme={BeautifulTheme}>
+                        <Routes>
+                            <Route path={"/"} element={<ContactForm />} />
+                            <Route path={"/form"} element={<ContactForm />} />
+                            <Route path={"/grid"} element={<ContatctCardGrid />} />
+                            <Route path={"/table"} element={<ContactTable />} />
+                            <Route path={"/data"} element={<ContactDataGrid />} />
+                        </Routes>
+                    </ThemeProvider>
+                    
                 
                 </main>
             </div>

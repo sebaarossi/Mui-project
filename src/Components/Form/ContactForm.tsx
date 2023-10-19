@@ -94,7 +94,7 @@ export default function ContactForm() {
     }
 
     const handleClearClick = () => {
-        clearValues
+        clearValues()
     }
 
     const clearValues = () => {
@@ -113,13 +113,14 @@ export default function ContactForm() {
                 margin:{xs: 1, sm: 2},
                 zIndex: "appBar",
                 "&:hover": {backgroundColor : "rgba(0,0,0,0.1"},
-                "& button.MuiButton-text": {backgroundColor: "primary.light"}
+                backgroundColor: "grid.dark",
+                // "& button.MuiButton-text": {backgroundColor: "primary.light"}
             }}>
                 <form>
                     <FormControl>
                         <StyledFormGroup 
                             row
-                            paddingTop={10}
+                            paddingtop={10}
                         >
                             <BeautifulTextField
                                 value={formValues.name}
@@ -157,8 +158,8 @@ export default function ContactForm() {
                                 handleRadioChange={handleRadioChange}
                             />
                             <Stack>
-                                <Button onClick={handleSumbit}>Sumbit</Button>
-                                <Button>Clear</Button>
+                                <Button variant="contained" sx={{height: 56, width: 100}} onClick={handleSumbit}>Sumbit</Button>
+                                <Button variant="beautiful" sx={{height: 56, width: 100}} onClick={handleClearClick}>Clear</Button>
                             </Stack>
                     
 

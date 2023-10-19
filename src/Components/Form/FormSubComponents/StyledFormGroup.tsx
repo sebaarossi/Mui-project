@@ -2,7 +2,7 @@ import { styled } from "@mui/material/styles";
 import { FormGroup} from "@mui/material";
 
 type StyledFormGroupProps = {
-    paddingTop?: number
+    paddingtop?: number
 }
 
 export const StyledFormGroup = styled(FormGroup, {
@@ -13,6 +13,6 @@ export const StyledFormGroup = styled(FormGroup, {
     (props) => ({
         padding: props.theme.spacing(2),
         justifyContent: "space-between",
-        paddingTop: props.paddingTop
+        paddingtop: props.paddingtop
     })
 )
