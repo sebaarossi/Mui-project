@@ -23,12 +23,12 @@ const simpleStyles = {
     drawer: {
         width: drawerWidth,
         "& .MuiBackdrop-root" : {
-            // display: "none",
+            display: "none",
         } 
     },
     drawerPaper: {
         width: drawerWidth,
-        backgroundColor: "rgba(120,120,120,0.2)"
+        backgroundColor: "white"
     },
     content: {
         marginLeft: drawerWidth,
@@ -64,7 +64,9 @@ export default function NavDrawer(){
                     
                     <List>
                         {[{text: "Input Form", route: "/form"}, {text: "Contact Card Grid", route: "/grid"}, {text: "Contact table", route: "/table"}, {text: "Contact Data Grid", route: "/data"}].map((nav, index) => 
-                            <ListItem key={nav.text}><Link to={nav.route}>{nav.text}</Link></ListItem>
+                            <ListItem key={nav.text}  >
+                                <Link to={nav.route}>{nav.text}</Link>
+                            </ListItem>
                         )}
                     </List>
                 

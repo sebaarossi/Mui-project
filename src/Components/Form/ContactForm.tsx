@@ -157,7 +157,7 @@ export default function ContactForm() {
                                 preference={formValues.preference}
                                 handleRadioChange={handleRadioChange}
                             />
-                            <Stack>
+                            <Stack justifyContent={"space-around"} alignItems={"center"} sx={{minWidth: minWidth}}>
                                 <Button variant="contained" sx={{height: 56, width: 100}} onClick={handleSumbit}>Sumbit</Button>
                                 <Button variant="beautiful" sx={{height: 56, width: 100}} onClick={handleClearClick}>Clear</Button>
                             </Stack>

@@ -56,11 +56,20 @@ export default function ContactDatadGrid() {
     return (
         <div style={{height: "500", backgroundColor: "white"}}>
             <DataGrid
-            rows={rows()}
-            columns={columns(theme)}
-            // pageSize={5}
-            // headerHeight={60}
-            rowHeight={120}
+                rows={rows()}
+                columns={columns(theme)}
+                // pageSize={5}
+                // headerHeight={60}
+                
+                rowHeight={70}
+                sx={{
+                    boxShadow: 2,
+                    border: 2,
+                    borderColor: 'primary.light',
+                    '& .MuiDataGrid-cell:hover': {
+                      color: 'primary.main',
+                    },
+                  }}
             />
         </div>
        

@@ -4,15 +4,15 @@ import { contactData } from "../../Data/ContactData"
 
 export default function ContactTable() {
     return (
-       <TableContainer>
+       <TableContainer sx={{backgroundColor: "white"}}>
             <Table>
                 <TableHead>
                     <TableRow>
-                        <TableCell>Name</TableCell>
-                        <TableCell>Role</TableCell>
-                        <TableCell>Skills</TableCell>
-                        <TableCell>Start Date</TableCell>
-                        <TableCell>Preference</TableCell>
+                        <TableCell sx={{fontSize: "16px", fontWeight: "bold", textAlign: "center"}}>Name</TableCell>
+                        <TableCell sx={{fontSize: "16px", fontWeight: "bold", textAlign: "center"}}>Role</TableCell>
+                        <TableCell sx={{fontSize: "16px", fontWeight: "bold", textAlign: "center"}}>Skills</TableCell>
+                        <TableCell sx={{fontSize: "16px", fontWeight: "bold", textAlign: "center"}}>Start Date</TableCell>
+                        <TableCell sx={{fontSize: "16px", fontWeight: "bold", textAlign: "center"}}>Preference</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -24,11 +24,11 @@ export default function ContactTable() {
                                         Object.entries(contact).map(([key, value]) =>{
                                             if(key === "skills"){
                                                 return (
-                                                    <TableCell key={contact.id+key}>{value.join(", ")}</TableCell>
+                                                    <TableCell sx={{textAlign: "center"}} key={contact.id+key}>{value.join(", ")}</TableCell>
                                             )}
                                             if(key !== "id"){
                                             return (
-                                                <TableCell>{value}</TableCell>
+                                                <TableCell sx={{textAlign: "center"}}>{value}</TableCell>
                                             )}
                                             return ""
                                         })
