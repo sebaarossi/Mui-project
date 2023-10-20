@@ -28,7 +28,8 @@ export default function BeautifulSelect (
             renderValue={(selected : string[]) => selected.join(', ') }
             sx={{
                 minWidth: minWidth,
-                marginRight: 2
+                marginRight: 2,
+                marginBottom: {xs: 2, md: 0}
             }}
             multiple
             MenuProps={{

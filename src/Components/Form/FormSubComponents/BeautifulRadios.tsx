@@ -6,7 +6,8 @@ export default function BeautifulRadios(props:{preference: string | undefined, h
         <FormGroup
             sx={{
                 minWidth: minWidth,
-                marginRight: 2
+                marginRight: 2,
+                marginBottom: {xs: 2, md: 0}
             }}
         >
             <FormLabel component="legend">
